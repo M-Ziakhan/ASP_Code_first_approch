@@ -1,0 +1,429 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="card bg-light text-dark">
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills nav-justified" role="tablist">
+                    <li role="presentation" class="nav-item"><a class="nav-link" href="#Login" aria-controls="Login" role="tab" data-toggle="tab" aria-selected="false"><strong>Login</strong></a></li>
+                    <li role="presentation" class="nav-item"><a class="nav-link active" href="#Register" aria-controls="Register" role="tab" data-toggle="tab" aria-selected="true"><strong>Register</strong></a></li>
+                    <li role="presentation" class="nav-item"><a class="nav-link" href="#Forgot" aria-controls="Forgot" role="tab" data-toggle="tab" aria-selected="false"><strong>Forgot Password?</strong></a></li>
+                </ul>
+            </div>
+           
+                <div class="card-body">
+                    <div class="tab-content mt-3">
+                        <div role="tabpanel" class="tab-pane" id="Login">
+                            <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+                                <form method="post" class="user-log-form" id="user-login" novalidate="">
+                                    <h2>Login</h2>
+                                    <div id="message"></div>
+                                    <div class="form-group">
+                                        <label>Enter your CNIC <span class="text-danger">(without dashes) *</span></label>
+                                        <input type="text" name="user_cnic" id="user_cnic" class="form-control" required="" data-parsley-trigger="keyup" data-parsley-required-message="CNIC is required" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="13" autocomplete="off">
+                                        <span id="error_user_cnic" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password <span class="text-danger">*</span></label>
+                                        <input type="password" name="user_password" id="user_password" required="" data-parsley-required-message="Password is required" data-parsley-trigger="keyup" class="form-control">
+                                        <span id="error_user_password" class="text-danger"></span>
+                                    </div>
+                                    <div class="btns-wrap">
+                                        <div class="wrap">
+                                            <input type="hidden" name="action" value="user-login">
+                                            <button type="submit" id="btn-login" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade active show" id="Register">
+                            <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+                                <!--<p class="text-bold text-center text-danger">Registration Closed.</p>-->
+                                <form class="user-log-form" method="post" id="user-register" novalidate="">
+                                    <div class="text-success" id="registerMessage"></div>
+                                    <h2>Register</h2>
+                                    <div id="register-message"></div>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-8">
+                                            <div class="form-group">
+                                                <label>Name <span class="text-danger">*</span></label>
+                                                <input type="text" name="userName" id="userName" class="form-control" required="" data-parsley-pattern="^(?:[A-Za-z]+[ ])*[A-Za-z]+$" data-parsley-required-message="Name is required" data-parsley-trigger="keyup" autocomplete="off" placeholder="Enter your Name...">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <div class="form-group">
+                                                <label>Gender <span class="text-danger">*</span></label>
+                                                <select name="userGender" class="form-control" id="userGender" data-parsley-required="true" data-parsley-required-message="Select Gender" required="">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="1">Male</option>
+                                                    <option value="2">Female</option>
+                                                    <option value="3">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email <span class="text-danger">*</span></label>
+                                        <input type="email" name="userEmail" id="userEmail" required="" data-parsley-type="email" data-parsley-required-message="Email is required" data-parsley-trigger="keyup" class="form-control" autocomplete="off" placeholder="Enter your Email...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile Number <span class="text-danger">*</span></label>
+                                        <input type="text" name="userContact" id="userContact" required="" data-parsley-trigger="keyup" data-parsley-required-message="Mobile No is required" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" autocomplete="off" placeholder="Enter your Mobile No...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter your CNIC <span class="text-danger">(without dashes) *</span></label>
+                                        <input type="text" name="userCnic" id="userCnic" class="form-control" required="" data-parsley-trigger="keyup" data-parsley-required-message="Valid CNIC is required" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="13" autocomplete="off" placeholder="Enter your valid CNIC No...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password <span class="text-danger">*</span></label>
+                                        <input type="password" name="userPassword" id="userPassword" required="" data-parsley-length="[6, 16]" data-parsley-required-message="Password is required" data-parsley-trigger="keyup" class="form-control" placeholder="Enter your Password...">
+                                    </div>
+                                    <div class="btns-wrap">
+                                        <div class="wrap">
+                                            <input type="hidden" name="action" value="user_registration">
+                                            <button type="submit" id="btn-register" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Register</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Forgot">
+                            <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+                                <h2>Forgot Password?</h2>
+                                <form class="user-log-form" method="post" id="user-forgot-password" novalidate="">
+                                    <div class="form-group">
+                                        <label><span class="text-info">Your password will be send to your register email</span></label>
+                                        <input type="text" name="forgotEmail" id="forgotEmail" required="" data-parsley-trigger="keyup" data-parsley-required-message="Valid CNIC is required" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" autocomplete="off" placeholder="Please Enter Your CNIC Number...">
+                                    </div>
+                                    <div class="btns-wrap">
+                                        <div class="wrap">
+                                            <input type="hidden" name="action" value="user_forgot_password">
+                                            <button type="submit" id="btn-forgot" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Send Password</button>
+                                            <span class="text-danger forgot-message"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/2.1.11/jquery.mixitup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+
+<script>
+    function get_all_active_projects() {
+        var action = 'fetch_all_active_projects';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "POST",
+            data: { action: action },
+            dataType: "json",
+            success: function (data) {
+                $('.activeProjectDetails').html(data);
+            }
+        });
+    }
+    function get_project_details(project) {
+        var action = 'get_project_details';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "POST",
+            data: { project: project, action: action },
+            dataType: "JSON",
+            success: function (data) {
+                $('.project_details').html(data);
+            }
+        });
+    }
+    function get_all_closed_projects() {
+        var action = 'fetch_all_closed_projects';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "POST",
+            data: { action: action },
+            dataType: "json",
+            success: function (data) {
+                $('.closedProjectDetails').html(data);
+            }
+        });
+    }
+    function pageViews() {
+        var action = 'page_views';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "POST",
+            data: { action: action },
+            success: function (data) {
+
+            }
+        });
+    }
+    function get_notification_details(notification) {
+        var action = 'get_notification_details';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "POST",
+            data: { notification: notification, action: action },
+            success: function (data) {
+                $('.notification_details').html(data);
+            }
+        });
+    }
+    function print() {
+        printJS({
+            printable: 'printData',
+            type: 'html',
+            targetStyles: ['*']
+        });
+    }
+    function update_applicant_status() {
+        var action = 'update_time';
+        $.ajax({
+            url: "ajax-functions.php",
+            method: "post",
+            data: { action: action },
+            success: function (data) {
+                console.log("Updated");
+            }
+        });
+    }
+    $(document).ready(function () {
+        // Projects
+        get_all_active_projects();
+        //get_all_closed_projects();
+        pageViews();
+        update_applicant_status();
+        $(document).on('click', '.view_project_details', function () {
+            var project = $(this).attr("id");
+            get_project_details(project);
+            $('#view_project_modal').modal('show');
+        });
+        $(document).on('click', '.view_notification_details', function () {
+            var notification = $(this).attr("id");
+            get_notification_details(notification)
+            $('#notificatioModal').modal('show');
+        });
+        $(document).on('click', '.track_download_attachment', function () {
+            var btn_id = $(this).attr("id");
+            var action = 'track_attachment_download';
+            $.ajax({
+                url: "ajax-functions.php",
+                method: "POST",
+                data: { btn_id: btn_id, action: action },
+                success: function (data) {
+
+                }
+
+            });
+        });
+        //$("#owl-slide").owlCarousel({
+        //    autoPlay: 3000,
+        //    items: 1,
+        //    itemsDesktop: [1199, 1],
+        //    itemsDesktopSmall: [979, 1],
+        //    itemsTablet: [768, 1],
+        //    itemsMobile: [479, 1],
+        //    navigation: true,
+        //    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+        //    pagination: true
+        //});
+        // Subscribe for Newsletter
+        $('#newsletter-sub-form').on('submit', function (event) {
+            event.preventDefault();
+            if ($('#subscribe_name').val() == '' || $('#subscribe_email').val() == '') {
+                return false;
+            } else {
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: "ajax-functions.php",
+                    method: "POST",
+                    data: formData,
+                    beforeSend: function () {
+                        $("#subscribe-btn").html("<i class='fa fa-spinner fa-spin '></i> Checking...");
+                    },
+                    success: function (response) {
+                        if (response == "success") {
+                            $("#message").html('<div class="alert alert-success"> <i class="fa fa-check"></i> Successfully Subscribed</div>');
+                            $('#newsletter-sub-form')[0].reset();
+                        } else {
+                            $("#message").fadeIn(1000, function () {
+                                $("#message").html('<div class="alert alert-danger"> <i class="fa fa-times"></i> ' + response + ' </div>');
+                            });
+                        }
+                        $("#subscribe-btn").html("Subscribe");
+                    }
+                });
+            }
+        });
+        $(document).on('click', '.printRollNo', function () {
+            print();
+        });
+        // Roll No
+        $(document).on('click', '.view_roll_no', function () {
+            var detail = $(this).attr("id");
+            var cnic = $(this).data("cnic");
+            var project = $(this).data("project");
+            var post = $(this).data("post");
+            var action = 'get_roll_slip';
+            $.ajax({
+                url: "ajax-functions.php",
+                method: "POST",
+                data: { detail: detail, cnic: cnic, project: project, post: post, action: action },
+                success: function (data) {
+                    $('.details').html(data);
+                    $('#roll_no_details').modal('show');
+                }
+            });
+        });
+
+        // Apply for Post
+        $(document).on('click', '.btn-apply-for', function () {
+            var detail_id = $(this).attr("id");
+            var project_id = $(this).attr("data-project");
+            var action = 'add_project_applicant_detail';
+            $.ajax({
+                url: "ajax-functions.php",
+                method: "POST",
+                data: { detail_id: detail_id, project_id: project_id, action: action },
+                success: function (data) {
+                    $('#view_project_modal').modal('hide');
+                    get_all_active_projects();
+                    check_applicant_status();
+                }
+            });
+        });
+
+        setInterval(function () {
+            update_applicant_status();
+        }, 5000);
+
+        // Countdown
+        $('[data-countdown]').each(function () {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate, function (event) {
+                $(this).html(event.strftime(''
+                    + '<div class="coming-box">%D <span>Days</span></div> '
+                    + '<div class="coming-box">%H <span>Hours</span></div> '
+                    + '<div class="coming-box">%M <span>Minutes</span></div> '
+                    + '<div class="coming-box">%S <span>Seconds</span></div> '));
+            });
+        });
+    });
+</script>
+@*<script>
+    $(document).ready(function () {
+        $('#user-register, #user-login, #user-forgot-password').parsley();
+        // User Login
+        $('#user-login').on('submit', function (event) {
+            event.preventDefault();
+            if ($('#user-login').parsley().isValid()) {
+                var data = $("#user-login").serialize();
+                $.ajax({
+                    url: 'ajax-functions.php',
+                    method: "post",
+                    data: data,
+                    beforeSend: function () {
+                        $("#message").fadeOut();
+                        $("#btn-login").html('<i class="fa fa-spinner fa-spin"></i> Checking...');
+                    },
+                    success: function (response) {
+                        if (response == "success") {
+                            $('#btn-login').attr('disabled', 'disabled');
+                            $("#btn-login").html("<i class='fa fa-spinner fa-spin '></i> Processing...");
+                            setTimeout(' window.location.href = "profile"; ', 1000);
+                        } else {
+                            $("#message").fadeIn(1000, function () {
+                                $('#btn-login').attr('disabled', false);
+                                $("#btn-login").html('Login');
+                                swal({
+                                    title: "Sorry!",
+                                    text: response,
+                                    icon: "warning",
+                                    button: "OK"
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        // Register
+        $('#user-register').on('submit', function (event) {
+            event.preventDefault();
+            if ($('#user-register').parsley().isValid()) {
+                var data = $("#user-register").serialize();
+                $.ajax({
+                    url: "ajax-functions.php",
+                    method: "post",
+                    data: data,
+                    beforeSend: function () {
+                        $("#register-message").fadeOut();
+                        $('#btn-register').attr('disabled', 'disabled');
+                        $("#btn-register").html('<i class="fa fa-spinner fa-spin"></i> Registering...');
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        if (response == "ok") {
+                            $('#user-register')[0].reset();
+                            $('#user-register').parsley().reset();
+                            $('#btn-register').attr('disabled', false);
+                            $("#btn-register").html('Register');
+                            swal({
+                                title: "Congratulations",
+                                text: "Successfully registered, now login to your account.!",
+                                icon: "success",
+                                button: "Okay!",
+                            });
+                        } else {
+                            $("#register-message").fadeIn(1000, function () {
+                                $('#btn-register').attr('disabled', false);
+                                $("#btn-register").html('Register');
+                                swal({
+                                    title: "Sorry!",
+                                    text: response,
+                                    icon: "warning",
+                                    button: "OK"
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        // Forgot Password
+        $('#user-forgot-password').on('submit', function (event) {
+            event.preventDefault();
+            if ($('#user-forgot-password').parsley().isValid()) {
+                var data = $("#user-forgot-password").serialize();
+                $.ajax({
+                    url: "ajax-functions.php",
+                    method: "post",
+                    data: data,
+                    success: function (data) {
+                        $('.forgot-message').html(data);
+                    }
+                });
+            }
+        });
+
+    });
+</script>*@
